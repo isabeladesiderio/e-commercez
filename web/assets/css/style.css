@@ -176,3 +176,56 @@ nav .nav-container input[type=search]{
     cursor:pointer;
     background:#0cb00c;
 }
+.produtos{
+    width:100%;
+    float:left;
+    display:block;
+    list-style-type: none;
+}
+.produtos li{
+    border-bottom:1px solid #ccc;
+    width:100%;
+    position:relative;
+    float:left;
+    display:block;
+    padding:25px 0;
+}
+.produtos li:last-child{
+    border-bottom:none;
+}
+.produtos li .img-produto-list{
+    width:10%;
+    height:100px;
+    float:left;
+    position:relative;
+}
+.produtos li .img-produto-list img{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+.produtos li .detalhes-produto{
+    width:80%;
+    float:left;
+    position:relative;
+}
+.produtos li .acoes-produto{
+    width:10%;
+    line-height:100px;
+    float:left;
+    position:relative;
+}
+.finalizar{
+    background:green;
+    height:30px;
+    float:right;
+    padding:0 20px;
+    border:none;
+    color:#fff;
+    border-radius:25px;
+    transition: .2s;
+}
+.finalizar:hover{
+    cursor:pointer;
+    background:#0cb00c;
+}
