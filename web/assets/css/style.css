@@ -7,7 +7,8 @@ body{
 }
 nav{
     width:100%;
-    background:#069;
+    background:#09f;
+    border-bottom:3px solid #069;
     color:#fff;
     height:50px;
     line-height:50px;
@@ -18,6 +19,10 @@ nav .nav-logo{
     text-transform: uppercase;
     font-weight: bold;
     padding:0 10px;
+}
+nav .nav-logo a{
+    color:#fff;
+    text-decoration:none;
 }
 nav .nav-container{
     width:60%;
@@ -46,4 +51,128 @@ nav .nav-container input[type=search]{
     font-size:20px;
     padding:0 10px;
     outline: none;
+}
+.divider{
+    width:100%;
+    height:1px;
+    float:left;
+    display:block;
+    background:#ccc;
+    margin:10px 0;
+}
+.card{
+    margin-top:10px;
+    width:100%;
+    border:1px solid #ccc;
+    padding:10px;
+    position:relative;
+    float:left;
+    line-height:25px;
+}
+.card h2{
+    color:#666;
+}
+.card a{
+    color:#09f;
+    text-decoration:none;
+}
+.card h3{
+    color:#09f;
+    border-left:2px solid #09f;
+    padding-left:10px;
+    margin-bottom:5px;
+}
+.card #quantity{
+    width:50px;
+    height:30px;
+    border:1px solid #ccc;
+    text-align: center;
+}
+.card .button-add{
+    width:30px;
+    height:30px;
+    background:#09f;
+    border:none;
+    border-radius:50%;
+    color:#fff;
+    font-size:18px;
+    font-weight:bold;
+    outline:none;
+    transition: .2s;
+}
+.card .button-add:hover{
+    cursor:pointer;
+    background:#069;
+}
+.card .add-cart-button{
+    background:green;
+    height:40px;
+    border-radius:30px;
+    color:#fff;
+    border:none;
+    font-size:18px;
+    font-weight: bold;
+    outline: none;
+    padding:0 20px;
+    transition: .2s;
+}
+.card .add-cart-button:hover{
+    background:#0cb00c;
+    cursor:pointer;
+}
+.card ul{
+    list-style-type:none;
+}
+.card .img-produto{
+    width:100%;
+    height:300px;
+    position:relative;
+    float:left;
+    display:block;
+}
+.card .img-produto img{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+.card .detalhes-produto{
+    width:100%;
+    position:relative;
+    float:left;
+    display:block;
+}
+.card .detalhes-produto a{
+    text-decoration: none;
+    color:#09f;
+}
+.card .detalhes-produto label{
+    width:100%;
+    float:left;
+    display:block;
+    color:green;
+    font-size:22px;
+    font-weight:bold;
+}
+.card .adicionar-produto{
+    width:100%;
+    position:relative;
+    float:left;
+    display:block;
+    margin-top:5px;
+}
+.card .adicionar-produto .add-cart{
+    width:100%;
+    height:40px;
+    font-size:18px;
+    background:green;
+    border:none;
+    border-radius:5px;
+    color:#fff;
+    font-weight:bold;
+    outline:none;
+    transition: .2s;
+}
+.card .adicionar-produto .add-cart:hover{
+    cursor:pointer;
+    background:#0cb00c;
 }

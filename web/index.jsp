@@ -1,44 +1,87 @@
-<%-- 
-    Document   : index
-    Created on : 20/11/2018, 01:09:28
-    Author     : Windows 7
---%>
-
-<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no">
-        <title>E-Commercez</title>
-        <link href="${pageContext.request.contextPath}/assets/css/bootstrap-grid.min.css" rel="stylesheet"/>
-        <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet"/>
-    </head>
-    <body>
-        <nav>
-            <div class="nav-logo">
-                E-Commercez
-            </div>
-            <div class="nav-container">
-                <input type="search" name="search" id="search" placeholder="Pesquise um produto..."/>
-            </div>
-            <div class="nav-items">
+<jsp:include page="inc/header.jsp"/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-lg-2">
+            <div class="card">
+                <h3>Marcas</h3>
                 <ul>
                     <li>
-                        <a href="cart.jsp">Carrinho</a>
+                        <input type="checkbox" name="marca" id="marca_1" value=""/>
+                        <label for="marca_1">Tramontina</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="marca" id="marca_2" value=""/>
+                        <label for="marca_2">Arno</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="marca" id="marca_3" value=""/>
+                        <label for="marca_3">Gradient</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="marca" id="marca_4" value=""/>
+                        <label for="marca_4">Sony</label>
                     </li>
                 </ul>
             </div>
-        </nav>
-        <div class="container-fluid">
+        </div>
+        <div class="col-sm-12 col-md-10 col-lg-10">
             <div class="row">
-                <div class="col-md-2 col-lg-2">
-                    Filtros
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="img-produto">
+                            <img src="https://images-americanas.b2w.io/produtos/01/00/item/133764/1/133764143_1GG.jpg"/>
+                        </div>
+                        <div class="detalhes-produto">
+                            <p><a href="produto">Panela Tramontina</a></p>
+                            <label>
+                                R$ 48,90
+                            </label>
+                        </div>
+                        <div class="adicionar-produto">
+                            <button class="add-cart">
+                                Adicionar ao carrinho
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-12 col-md-10 col-lg-10">
-                    Produtos
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="img-produto">
+                            <img src="https://images-americanas.b2w.io/produtos/01/00/item/133764/1/133764143_1GG.jpg"/>
+                        </div>
+                        <div class="detalhes-produto">
+                            <p><a href="produto">Panela Tramontina</a></p>
+                            <label>
+                                R$ 48,90
+                            </label>
+                        </div>
+                        <div class="adicionar-produto">
+                            <button class="add-cart">
+                                Adicionar ao carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="img-produto">
+                            <img src="https://images-americanas.b2w.io/produtos/01/00/item/133764/1/133764143_1GG.jpg"/>
+                        </div>
+                        <div class="detalhes-produto">
+                            <p><a href="produto">Panela Tramontina</a></p>
+                            <label>
+                                R$ 48,90
+                            </label>
+                        </div>
+                        <div class="adicionar-produto">
+                            <button class="add-cart">
+                                Adicionar ao carrinho
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+<jsp:include page="inc/footer.jsp"/>
