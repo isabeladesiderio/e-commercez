@@ -1,0 +1,49 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family: 'Trebuchet MS', Arial, Helvetica;
+}
+nav{
+    width:100%;
+    background:#069;
+    color:#fff;
+    height:50px;
+    line-height:50px;
+}
+nav .nav-logo{
+    width:20%;
+    float:left;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding:0 10px;
+}
+nav .nav-container{
+    width:60%;
+    float:left;
+}
+nav .nav-items{
+    width:20%;
+    float:left;
+}
+nav .nav-items ul{
+    list-style-type: none;
+}
+nav .nav-items ul li{
+    float:right;
+}
+nav .nav-items ul li a{
+    color:#fff;
+    text-decoration:none;
+    padding:0 10px;
+}
+nav .nav-container input[type=search]{
+    width:80%;
+    height:40px;
+    border-radius:5px;
+    border:none;
+    font-size:20px;
+    padding:0 10px;
+    outline: none;
+}
