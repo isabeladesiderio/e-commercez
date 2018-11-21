@@ -1,11 +1,10 @@
 <%-- 
-    Document   : login
-    Created on : 21/11/2018, 00:34:45
-    Author     : Isabela Desiderio
+    Document   : cadastro
+    Created on : 21/11/2018, 09:53:12
+    Author     : Murah
 --%>
 
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -18,24 +17,24 @@
             /*    --------------------------------------------------
             :: Login Section
             -------------------------------------------------- */
-        #login {
+        #cadastro {
             padding-top: 50px
         }
-        #login .form-wrap {
+        #cadastro .form-wrap {
             width: 30%;
             margin: 0 auto;
         }
-        #login h1 {
+        #cadastro h1 {
             color: #1fa67b;
             font-size: 18px;
             text-align: center;
             font-weight: bold;
             padding-bottom: 20px;
         }
-        #login .form-group {
+        #cadastro .form-group {
             margin-bottom: 25px;
         }
-        #login .checkbox {
+        #cadastro .checkbox {
             margin-bottom: 20px;
             position: relative;
             -webkit-user-select: none;
@@ -44,7 +43,7 @@
             -o-user-select: none;
             user-select: none;
         }
-        #login .checkbox.show:before {
+        #cadastro .checkbox.show:before {
             content: '\e013';
             color: #1fa67b;
             font-size: 17px;
@@ -53,7 +52,7 @@
             pointer-events: none;
             font-family: 'Glyphicons Halflings';
         }
-        #login .checkbox .character-checkbox {
+        #cadastro .checkbox .character-checkbox {
             width: 25px;
             height: 25px;
             cursor: pointer;
@@ -62,16 +61,16 @@
             vertical-align: middle;
             display: inline-block;
         }
-        #login .checkbox .label {
+        #cadastro .checkbox .label {
             color: #6d6d6d;
             font-size: 13px;
             font-weight: normal;
         }
-        #login .btn.btn-custom {
+        #cadastro .btn.btn-custom {
             font-size: 14px;
             margin-bottom: 20px;
         }
-        #login .forget {
+        #cadastro .forget {
             font-size: 13px;
             text-align: center;
             display: block;
@@ -111,25 +110,33 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<section id="login">
+<section id="cadastro">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-wrap">
-                    <h1>Entrar no sistema</h1>                    
-                    <form method="post" id="login-form">
-                        <div class="form-group">
-                            <input type="login" id="email" class="form-control" placeholder="Meu login" name="login">
+                    <h1>Cadastro</h1>                    
+                    <form method="post" id="cadastro-form">
+                         <div class="form-group">
+                            <input type="cpf" id="cpf" class="form-control" placeholder="CPF" name="cpf">
                         </div>
                         <div class="form-group">
-                            <input type="password" id="key" class="form-control" placeholder="Sua senha" name="password">
+                            <input type="email" id="email" class="form-control" placeholder="Email" name="email">
                         </div>
+                        <div class="form-group">
+                            <input type="login" id="id" class="form-control" placeholder="Login" name="login">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="key" class="form-control" placeholder="Senha" name="password">
+                        </div>
+                         
+                       
                         <div class="checkbox">
                             <span class="character-checkbox" onclick="showPassword()"></span>
                             <span class="label">Mostrar Senha</span>
                         </div>
                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Acessar">
-                        <a href="cadastro.jsp">Cadastre-se</a>
+                        <a href="login.jsp">Logar</a>
                     </form>
                     <hr>
                 </div>
