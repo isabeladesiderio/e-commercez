@@ -10,6 +10,7 @@ $(function(){
         return exist;
     }
     
+    //Quantidade da pagina de produto
     $(".less").click(function(){
         var quantity = $("#quantity").val();
         if(quantity == 1)
@@ -28,6 +29,28 @@ $(function(){
             quantity--;
         }
         $("#quantity").val(quantity);
+    });
+    
+    $(".less-cart").click(function(){
+        var id = $(this).attr('id');
+        var quantity = $("#quantity_"+id).val();
+        if(quantity == 1){
+            $("#quantity_"+id).val(1);
+        }else{
+            quantity--;
+            $("#quantity_"+id).val(quantity);
+        }
+    });
+    
+    $(".plus-cart").click(function(){
+        var id = $(this).attr('id');
+        var maxquantity = $("#maxquantity_"+id).val();
+        var quantity = $("#quantity_"+id).val();
+        quantity++;
+        if(quantity > maxquantity){
+            quantity--;
+        }
+        $("#quantity_"+id).val(quantity);
     });
     
     $(".produtos").ready(function(){
@@ -52,8 +75,6 @@ $(function(){
                 });
                 html += "</div>";
                 $(".produtos").html(html);
-            }, error: function(e){
-                console.log(e);
             }
         });
     });
@@ -67,7 +88,6 @@ $(function(){
             data: {
                 query: "marcas"
             }, success: function(data){
-                console.log(data);
                 var html = "";
                 $.each(data, function(key,  value){
                     var checked = "";
@@ -83,9 +103,27 @@ $(function(){
         });
     });
     
+    $(document).on('click', '.add-cart, .add-cart-button', function(){
+        var $this = $(this);
+        var produto = $this.attr('id');
+        
+        $.ajax({
+            type: 'POST',
+            url: 'cart',
+            dataType: 'json',
+            data: {
+                produto: produto
+            }, success: function(data){
+                console.log(data);
+                $this.text("Produto adicionado");
+            }, error: function(e){
+                console.log(e);
+            }
+        })
+    });
+    
     $(document).on('change', '.marca',function(){
         var marca = $(this).val();
         $(location).attr('href', '?marca='+marca);
-        
     });
 });
