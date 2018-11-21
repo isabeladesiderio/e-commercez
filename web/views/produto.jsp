@@ -24,7 +24,7 @@
                     <button class="button-add plus">+</button>
                 </p>
                 <div class="divider"></div>
-                <button class="add-cart-button">Adicionar ao carrinho</button>
+                <button class="add-cart-button" id="<% out.print(produto.getId()); %>">Adicionar ao carrinho</button>
             </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12">

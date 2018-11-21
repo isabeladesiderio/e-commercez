@@ -5,6 +5,9 @@
 body{
     font-family: 'Trebuchet MS', Arial, Helvetica;
 }
+.text-center{
+    text-align:center;
+}
 nav{
     width:100%;
     background:#09f;
@@ -82,7 +85,7 @@ nav .nav-container input[type=search]{
     padding-left:10px;
     margin-bottom:5px;
 }
-.card #quantity{
+.card #quantity, .card .quantity{
     width:50px;
     height:30px;
     border:1px solid #ccc;
