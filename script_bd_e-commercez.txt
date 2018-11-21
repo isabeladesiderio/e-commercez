@@ -1,0 +1,48 @@
+-- -----------------------------------------------------
+-- Schema e-commercez
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `e-commercez`;
+USE `e-commercez` ;
+
+-- -----------------------------------------------------
+-- Table `e-commercez`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `e-commercez`.`users` (
+`id` INT(11) AUTO_INCREMENT,
+  `login` VARCHAR(10) NOT NULL,
+  `nome` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(10) NOT NULL,
+  `cpf` INT(11) NOT NULL,
+
+  PRIMARY KEY (`login`),
+  UNIQUE INDEX `login_UNIQUE` (`login` ASC) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `e-commercez`.`products`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `e-commercez`.`products` (
+  `titulo` VARCHAR(30) NOT NULL,
+  `descrição` VARCHAR(250) NOT NULL,
+  `preco` INT(10) NOT NULL,
+  `itensCompoem` VARCHAR(250) NOT NULL,
+  `id` INT(11) AUTO_INCREMENT,
+  `vendedor` VARCHAR(30) NOT NULL,
+  `qtdeDisponivel` INT(100) NOT NULL,
+  `endLoja` VARCHAR(250) NOT NULL,
+  `telefone` INT(15) NOT NULL,
+
+
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
