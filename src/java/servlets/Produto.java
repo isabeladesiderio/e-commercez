@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import dao.ProdutosDAO;
 
 /**
  *
@@ -26,10 +28,19 @@ public class Produto extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        PrintWriter out = response.getWriter();
+        
         String url = "/views/produto.jsp";
-      
+        
+        //Instanciando DAO
+        ProdutosDAO prod = new ProdutosDAO();
+        
+        //Colocando dados do produto na requisição
+        request.setAttribute("produto", prod.getById(request.getParameter("id")));
+        
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
+        
     }
 
     @Override
@@ -37,9 +48,24 @@ public class Produto extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
 
+        String query = (String) request.getParameter("query");
+        String marca = (String) request.getParameter("marca");
         
-
-        out.print("POST");
+        //Instanciando o DAO
+        ProdutosDAO prod = new ProdutosDAO();
+        
+        String json = "";
+        
+        switch(query){
+            case "produtos":
+                json = new Gson().toJson(prod.getProdutos(marca));
+                break;
+            case "marcas":
+                json = new Gson().toJson(prod.getMarcas());
+                break;
+        }
+        
+        out.print(json);
 
     }
     
