@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `e-commercez`.`products` (
   `qtdeDisponivel` INT(100) NOT NULL,
   `endLoja` VARCHAR(250) NOT NULL,
   `telefone` INT(15) NOT NULL,
+  `imagem` longblob NOT NULL,
 
 
   PRIMARY KEY (`id`),
