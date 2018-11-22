@@ -223,6 +223,71 @@ $(function(){
         });
     });
     
+    $(document).on('click', '.file', function(){
+        $("#image-input").click();
+    });
+    
+    $("#image-input").change(function(ev){
+        
+        var form = new FormData();
+        form.append('file', ev.target.files[0]);
+        
+        $.ajax({
+            type: "POST",
+            url: "https://notamaisapi.herokuapp.com/upload-photo",
+            data: form,
+            contentType: false,
+            cache: false,
+            processData: false,
+            async: false,
+            success: function(data){
+                $("#imagem").val(data.path);
+                $("#img-prod").attr('src', data.path);
+            }
+        });
+    });
+    
+    $("#register-product").submit(function(e){
+        e.preventDefault();
+        
+        var imagem = $("#imagem").val();
+        var titulo = $("#titulo").val();
+        var descricao = $("#descricao").val();
+        var vendedor = $("#vendedor").val();
+        var quantidade = $("#quantidade").val();
+        var endereco = $("#endereco").val();
+        var telefone = $("#telefone").val();
+        var preco = $("#preco").val();
+        
+        if(imagem == "" || titulo == "" || descricao == "" || vendedor == "" || quantidade == "" || endereco == "" || telefone == "" || preco == ""){
+            alert("Você deve preencher todos os campos");
+            return false;
+        }
+        
+        $.ajax({
+            type: "POST",
+            url: "../produto",
+            dataType: "json",
+            data: {
+                imagem: imagem,
+                titulo: titulo,
+                descricao: descricao,
+                vendedor: vendedor,
+                quantidade: quantidade,
+                endereco: endereco,
+                telefone: telefone,
+                preco: preco,
+                query: "cadastro"
+            }, success: function(data){
+                $(location).attr('href', 'adashboard.jsp');
+            }, error: function(e){
+                console.log(e);
+            }
+        });
+        
+        return false;
+    });
+    
     $(document).on('change', '.marca',function(){
         var marca = $(this).val();
         $(location).attr('href', '?marca='+marca);

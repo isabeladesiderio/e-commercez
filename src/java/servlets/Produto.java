@@ -52,6 +52,15 @@ public class Produto extends HttpServlet {
         String marca = (String) request.getParameter("marca");
         String search = (String) request.getParameter("search");
         
+        String imagem = (String) request.getParameter("imagem");
+        String titulo = (String) request.getParameter("titulo");
+        String descricao = (String) request.getParameter("descricao");
+        String vendedor = (String) request.getParameter("vendedor");
+        String quantidade = (String) request.getParameter("quantidade");
+        String endereco = (String) request.getParameter("endereco");
+        String telefone = (String) request.getParameter("telefone");
+        String preco = (String) request.getParameter("preco");
+        
         //Instanciando o DAO
         ProdutosDAO prod = new ProdutosDAO();
         
@@ -66,6 +75,9 @@ public class Produto extends HttpServlet {
                 break;
             case "search":
                 json = new Gson().toJson(prod.getBySlug(search));
+                break;
+            case "cadastro":
+                json = new Gson().toJson(prod.register(imagem, titulo, descricao, vendedor, quantidade, endereco, telefone, preco));
                 break;
         }
         

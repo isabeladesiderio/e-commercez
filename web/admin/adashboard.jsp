@@ -30,7 +30,10 @@
         </div>
         <div class="tab-pane" id="contadores">
             <br>
-            <h2 class="title-register">Lista de Produtos</h2>
+            <h2 class="title-register">
+                Lista de Produtos
+                <a href="registerproduct.jsp" class="btn btn-primary">Cadastrar Produto</a>
+            </h2>
             <br>
             <table id="produtos-list" class="display table">
                 <thead>

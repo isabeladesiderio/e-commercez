@@ -5,11 +5,17 @@
         <group>
             <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/web/views/cart.jsp</file>
             <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/web/inc/header.jsp</file>
-            <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/web/assets/css/style.css</file>
+            <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/src/java/dao/Conecta.java</file>
+            <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/web/assets/js/script.js</file>
+            <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/src/java/dao/ProdutosDAO.java</file>
+            <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/web/dashboard.jsp</file>
+            <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/src/java/servlets/Produto.java</file>
             <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/web/assets/css/bootstrap-grid.min.css</file>
-            <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/src/java/servlets/Login.java</file>
             <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/web/index.jsp</file>
+            <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/src/java/servlets/Cart.java</file>
             <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/web/views/produto.jsp</file>
+            <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/web/assets/css/style.css</file>
+            <file>file:/C:/Users/Windows%207/Documents/NetBeansProjects/e-commercez/src/java/servlets/Login.java</file>
         </group>
     </open-files>
 </project-private>
