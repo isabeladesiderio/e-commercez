@@ -46,8 +46,6 @@ public class ProdutosDAO {
             filter = "WHERE titulo LIKE '%"+search+"%' OR descrição LIKE'%"+search+"%'";
         }
         
-        System.out.println(filter);
-        
         try{
             Connection con = Conecta.getConexao();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM products "+filter+"");
@@ -134,6 +132,28 @@ public class ProdutosDAO {
         }
         
         return produto;
+    }
+
+    public boolean register(String imagem, String titulo, String descricao, String vendedor, String quantidade, String endereco, String telefone, String preco) {
+        try{
+            Connection con = Conecta.getConexao();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO products(titulo, descrição, preco, vendedor, qtdeDisponivel, endLoja, telefone, image, itensCompoem) VALUES(?,?,?,?,?,?,?,?, '')");
+            ps.setString(1, titulo);
+            ps.setString(2, descricao);
+            ps.setInt(3, Integer.parseInt(preco) * 100);
+            ps.setString(4, vendedor);
+            ps.setInt(5, Integer.parseInt(quantidade));
+            ps.setString(6, endereco);
+            ps.setString(7, telefone);
+            ps.setString(8, imagem);
+            ps.execute();
+            ps.close();
+            con.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return true;
     }
     
 }
