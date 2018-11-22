@@ -9,6 +9,20 @@ $(function(){
         return exist;
     }
     
+    var updatePrice = function(){
+        var produtos = $(".produtos").children();
+        var total = 0;
+
+        for(var i = 0; i < produtos.length; i++){
+            var produto = produtos[i].childNodes;
+            var price = $(produto[5]).val();
+            var quantity = produto[9].childNodes;
+            quantity = $(quantity[3]).val();
+            total += price * quantity;
+        }
+        $(".total-price").text(total.toFixed(2));
+    }
+    
     //Quantidade da pagina de produto
     $(".less").click(function(){
         var quantity = $("#quantity").val();
@@ -33,12 +47,23 @@ $(function(){
     $(".less-cart").click(function(){
         var id = $(this).attr('id');
         var quantity = $("#quantity_"+id).val();
-        if(quantity == 1){
-            $("#quantity_"+id).val(1);
-        }else{
+        if(quantity == 1)
+            quantity = 1;
+        else
             quantity--;
-            $("#quantity_"+id).val(quantity);
-        }
+        
+        $.ajax({
+            type: "POST",
+            url: "cart",
+            dataType: "json",
+            data: {
+                produto: id,
+                quantity: quantity
+            }, success: function(data){
+                $("#quantity_"+id).val(quantity);
+                updatePrice();
+            }
+        });
     });
     
     $(".plus-cart").click(function(){
@@ -49,18 +74,59 @@ $(function(){
         if(quantity > maxquantity){
             quantity--;
         }
-        $("#quantity_"+id).val(quantity);
+        $.ajax({
+            type: "POST",
+            url: "cart",
+            dataType: "json",
+            data: {
+                produto: id,
+                quantity: quantity
+            }, success: function(data){
+                $("#quantity_"+id).val(quantity);
+                updatePrice();
+            }, error: function(e){
+                console.log(e);
+            }
+        });
+    });
+    
+    $("#search").keydown(function(){
+        var search = $(this).val();
+        
+        setTimeout(function(){
+            $(".autocomplete").hide();
+            $.ajax({
+                type: "POST",
+                url: "produto",
+                dataType: "json",
+                data: {
+                    query: "search",
+                    search: search
+                }, success: function(data){
+                    $(".autocomplete ul").html("");
+                    $.each(data, function(key, value){
+                        $(".autocomplete ul").append("<li><a href='./dashboard.jsp?search="+value.titulo+"'>"+value.titulo+"</a></li>");
+                        $(".autocomplete").show();
+                    })
+                }, error: function(e){
+                    console.log(e);
+                }
+            });
+        }, 2000);
     });
     
     $(".produtos").ready(function(){
         var current = $("#current").val();
+        var search = $("#currents").val();
+        
         $.ajax({
             type: "POST",
             url: "produto",
             dataType: "json",
             data: {
                 query: "produtos",
-                marca: current
+                marca: current,
+                search: search
             }, success: function(data){
                 //Listando produtos
                 var html = "<div class='row'>";
@@ -113,7 +179,6 @@ $(function(){
             data: {
                 produto: produto
             }, success: function(data){
-                console.log(data);
                 $this.text("Produto adicionado");
             }, error: function(e){
                 console.log(e);
@@ -121,56 +186,46 @@ $(function(){
         })
     });
     
+    $("#users-list").ready(function () {
+        $.ajax({
+            url: "../adashboard",
+            method: "post",
+            data: {
+                query: "usuarios"
+            },
+            dataType: "json",
+            success: function (data) {
+                $.each(data, function(key, value){
+                    var html = "<tr><td>" + value.nome + "</td><td>" + value.cpf + "</td><td>" + value.login + "</td><td>" + value.email + "</td></tr>";
+                    $("#users-list tbody").append(html);
+                });
+
+            }
+        });
+    });
+
+    $("#produtos-list").ready(function () {
+
+        $.ajax({
+            url: "../adashboard",
+            method: "post",
+            data: {
+                query: "produto"
+            },
+            dataType: "json",
+            success: function (data) {
+                $.each(data, function(key, value){
+                    var html = "<tr><td>" + value.titulo + "</td><td>" + value.descricao + "</td><td>" + value.preco + "</td><td>" + value.itensCompoem + "</td><td>" + value.vendedor + "</td><td>" + value.qtdeDisponivel+"</td><td>" + value.endLoja+ "</td><td>" + value.telefone +"</td></tr>" ;
+                    $("#produtos-list tbody").append(html);
+                });
+
+            }
+        });
+    });
+    
     $(document).on('change', '.marca',function(){
         var marca = $(this).val();
         $(location).attr('href', '?marca='+marca);
     });
 });
- $("#users-list").ready(function () {
- 
-    $.ajax({
-        
-        url: "../adashboard",
-        method: "post",
-        data: {
-            query: "usuarios"
-        },
-        dataType: "json",
-        success: function (data) {
-     console.log(data);
-     $.each(data, function(key, value){
-            
-                    var html = "<tr><td>" + value.nome + "</td><td>" + value.cpf + "</td><td>" + value.login + "</td><td>" + value.email + "</td></tr>";
-$("#users-list tbody").append(html);
-});
-
-    }
-
-            
-        });
-    });
-      
-      $("#produtos-list").ready(function () {
- 
-    $.ajax({
-        
-        url: "../adashboard",
-        method: "post",
-        data: {
-            query: "produto"
-        },
-        dataType: "json",
-        success: function (data) {
-     console.log(data);
-     $.each(data, function(key, value){
-            
-                    var html = "<tr><td>" + value.titulo + "</td><td>" + value.descricao + "</td><td>" + value.preco + "</td><td>" + value.itensCompoem + "</td><td>" + value.vendedor + "</td><td>" + value.qtdeDisponivel+"</td><td>" + value.endLoja+ "</td><td>" + value.telefone +"</td></tr>" ;
-$("#produtos-list tbody").append(html);
-});
-
-    }
-
-            
-        });
-    });
       

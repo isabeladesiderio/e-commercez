@@ -6,6 +6,7 @@
             <div class="card">
                 <h3>Marcas</h3>
                 <input type='hidden' id='current' value='<% out.print(request.getParameter("marca")); %>'/>
+                <input type='hidden' id='currents' value='<% out.print(request.getParameter("search")); %>'/>
                 <ul class='marcas'>
                     <li>
                         <div class="lds-roller">

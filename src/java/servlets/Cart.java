@@ -61,34 +61,46 @@ public class Cart extends HttpServlet {
         HttpSession session = request.getSession();
         
         int produto = Integer.parseInt(request.getParameter("produto"));
+        String quantity = request.getParameter("quantity");
         
         ArrayList<Carrinho> cart = (ArrayList<Carrinho>) session.getAttribute("cart");
         if(cart == null){
             cart = new ArrayList<Carrinho>();
         }
-
-        if(in_array(cart, produto)){
+        
+        if(quantity != null){
             for(int i = 0; i < cart.size(); i++){
                 if(cart.get(i).getProduto().getId() == produto){
-                    int quantidade = cart.get(i).getQuantidade();
-                    quantidade++;
-                    cart.get(i).setQuantidade(quantidade);
+                    cart.get(i).setQuantidade(Integer.parseInt(quantity));
                 }
             }
             
             session.setAttribute("cart", cart);
         }else{
-            ProdutosDAO dao = new ProdutosDAO();
-            Produto prod = dao.getById(produto+"");
+            if(in_array(cart, produto)){
+                for(int i = 0; i < cart.size(); i++){
+                    if(cart.get(i).getProduto().getId() == produto){
+                        int quantidade = cart.get(i).getQuantidade();
+                        quantidade++;
+                        cart.get(i).setQuantidade(quantidade);
+                    }
+                }
 
-            //Adicionando o item ao carrinho
-            Carrinho item = new Carrinho();
-            item.setQuantidade(1);
-            item.setProduto(prod);
+                session.setAttribute("cart", cart);
+            }else{
+                ProdutosDAO dao = new ProdutosDAO();
+                Produto prod = dao.getById(produto+"");
 
-            cart.add(item);
+                //Adicionando o item ao carrinho
+                Carrinho item = new Carrinho();
+                item.setQuantidade(1);
+                item.setProduto(prod);
 
-            session.setAttribute("cart", cart);
+                cart.add(item);
+
+                session.setAttribute("cart", cart);
+            }
+            
         }
 
         out.print(new Gson().toJson(true));

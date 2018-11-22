@@ -12,13 +12,14 @@
                 <ul class="produtos">
                     <% if(cart != null){ %>
                         <% for(int i = 0; i < cart.size(); i++){ %>
-                            <li>
+                            <li id="<% out.print(cart.get(i).getProduto().getId()); %>">
                                 <div class="img-produto-list">
                                     <img src="<% out.print(cart.get(i).getProduto().getImage()); %>"/>
                                 </div>
                                 <div class="detalhes-produto">
-                                    <% out.print(cart.get(i).getProduto().getTitulo()); %>
+                                    <a href='produto?id=<% out.print(cart.get(i).getProduto().getId()); %>'><% out.print(cart.get(i).getProduto().getTitulo()); %></a>
                                 </div>
+                                <input type="hidden" name="price" id="price" value="<% out.print(cart.get(i).getProduto().getPreco() / 100); %>"/>
                                 <input type="hidden" name="maxquantity" id="maxquantity_<% out.print(cart.get(i).getProduto().getId()); %>" value="<% out.print(cart.get(i).getProduto().getQtdeDisponivel()); %>"/>
                                 <div class="acoes-produto">
                                     <button class="button-add less-cart" id="<% out.print(cart.get(i).getProduto().getId()); %>">-</button>
@@ -37,10 +38,10 @@
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="row">
-                    <div class="col-sm-12 col-md-2 col-lg-2">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
                         <h2>Total: R$ <span class='total-price'><% out.print(preco); %></span></h2>
                     </div>
-                    <div class="col-sm-12 col-md-10 col-md-10">
+                    <div class="col-sm-12 col-md-6 col-md-6">
                         <button class="finalizar">Finalizar Compra</button>
                     </div>
                 </div>

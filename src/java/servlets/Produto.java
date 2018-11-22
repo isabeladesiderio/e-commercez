@@ -50,6 +50,7 @@ public class Produto extends HttpServlet {
 
         String query = (String) request.getParameter("query");
         String marca = (String) request.getParameter("marca");
+        String search = (String) request.getParameter("search");
         
         //Instanciando o DAO
         ProdutosDAO prod = new ProdutosDAO();
@@ -58,10 +59,13 @@ public class Produto extends HttpServlet {
         
         switch(query){
             case "produtos":
-                json = new Gson().toJson(prod.getProdutos(marca));
+                json = new Gson().toJson(prod.getProdutos(marca, search));
                 break;
             case "marcas":
                 json = new Gson().toJson(prod.getMarcas());
+                break;
+            case "search":
+                json = new Gson().toJson(prod.getBySlug(search));
                 break;
         }
         

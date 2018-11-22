@@ -20,10 +20,15 @@
             
             <div class="nav-logo">
                 
-                <a href="${pageContext.request.contextPath}">E-Commercez</a>
+                <a href="${pageContext.request.contextPath}/dashboard.jsp">E-Commercez</a>
             </div>
             <div class="nav-container">
                 <input type="search" name="search" id="search" placeholder="Pesquise um produto..."/>
+                <div class="autocomplete">
+                    <ul>
+                        
+                    </ul>
+                </div>
             </div>
              
             <div class="nav-items">
