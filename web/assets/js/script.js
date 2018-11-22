@@ -1,7 +1,6 @@
 $(function(){
     
     var in_array = function(array, value){
-        let exist = false;
         for(var index in array){
             if(array[index] == value){
                 exist = true;
@@ -98,7 +97,7 @@ $(function(){
                 });
                 $(".marcas").html(html);
             }, error: function(e){
-                console.log(e);
+               
             }
         });
     });
@@ -127,3 +126,51 @@ $(function(){
         $(location).attr('href', '?marca='+marca);
     });
 });
+ $("#users-list").ready(function () {
+ 
+    $.ajax({
+        
+        url: "../adashboard",
+        method: "post",
+        data: {
+            query: "usuarios"
+        },
+        dataType: "json",
+        success: function (data) {
+     console.log(data);
+     $.each(data, function(key, value){
+            
+                    var html = "<tr><td>" + value.nome + "</td><td>" + value.cpf + "</td><td>" + value.login + "</td><td>" + value.email + "</td></tr>";
+$("#users-list tbody").append(html);
+});
+
+    }
+
+            
+        });
+    });
+      
+      $("#produtos-list").ready(function () {
+ 
+    $.ajax({
+        
+        url: "../adashboard",
+        method: "post",
+        data: {
+            query: "produto"
+        },
+        dataType: "json",
+        success: function (data) {
+     console.log(data);
+     $.each(data, function(key, value){
+            
+                    var html = "<tr><td>" + value.titulo + "</td><td>" + value.descricao + "</td><td>" + value.preco + "</td><td>" + value.itensCompoem + "</td><td>" + value.vendedor + "</td><td>" + value.qtdeDisponivel+"</td><td>" + value.endLoja+ "</td><td>" + value.telefone +"</td></tr>" ;
+$("#produtos-list tbody").append(html);
+});
+
+    }
+
+            
+        });
+    });
+      

@@ -1,8 +1,4 @@
-<%-- 
-    Document   : loginError
-    Created on : 21/11/2018, 12:16:16
-    Author     : Murah
---%>
+
 
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -95,7 +91,7 @@
             <div class="col-xs-12">
          <div class="form-wrap">
         <h1>ERRROOOOOOOOOOOOU</h1>
-        <a href="login.jsp">Tentar novamente.</a>
+        <a href="index.jsp">Tentar novamente.</a>
          </div>
                   </div>
               </div>
