@@ -11,7 +11,7 @@ package classes;
  */
 public class Carrinho{
     
-    private int quantidade;
+    private int quantidad;
     private Produto produto;
 
     public int getQuantidade() {
